@@ -10,7 +10,7 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 | # | Input Range | Type | HW cycles/iter | NPAt cycles/iter | Speedup |
 |---|---|---|:---:|:---:|:---:|
 | 1 | X1: −9.999e−311 / X2: +9.999e−312 | Subnormal (denormalized) | 5.2147 | 2.4553 | **×2.12** |
-| 2 | X1: −1.789e−31 / X2: +1.765e−26 | Small normal, heavy subtraction | 5.3264 | 3.6556 | **×1.46** |
+| 2 | X1: −1.789e−31 / X2: +1.765e−26 | Small normal, heavy subtraction | 5.4773 | 3.7429 | **×1.46** |
 | 3 | X1: 1.25e−01 / X2: 6.25e−01 | Normal fractional, same sign | 5.2580 | 2.3242 | **×2.26** |
 | 4 | X1: 3.456e+06 / X2: 8.765e+09 | Large integers, same sign | 5.4411 | 2.5621 | **×2.12** |
 | 5 | X1: 3.456e+15 / X2: 9.876e+15 | Very large, same sign | 5.2571 | 2.7267 | **×1.93** |
@@ -56,11 +56,11 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 
 **Hardware IEEE 754 Baseline**
 
-![Hardware IEEE 754 — small normal subtraction](Screenshot%202026-04-21%20181129.png)
+![Hardware IEEE 754 — small normal subtraction](Screenshot%202026-04-21%20184530.png)
 
 **NPAt Pathway 1**
 
-![NPAt Pathway 1 — small normal subtraction](Screenshot%202026-04-21%20104600.png)
+![NPAt Pathway 1 — small normal subtraction](Screenshot%202026-04-21%20181129.png)
 
 **Result: ×1.46 speedup · NPAt still faster despite heavy subtraction workload**
 
@@ -156,13 +156,13 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 
 Hardware FPU spread is consistently **< 2%** — the FPU pipeline runs at a highly predictable latency.
 
-NPAt spread is **7–12%** — higher variance is expected because the mantissa rounding step fires conditionally based on the state of the guard bits, which varies with the accumulated value. This creates a variable per-iteration cost depending on the input data. This is a measurement artifact, not an instability: the minimum and median values are consistent across sessions.
+NPAt spread is **7–12%** — higher variance is expected because the mantissa rounding step fires conditionally based on the state of the guard bits, which varies with the accumulated value. This creates variable per-iteration cost depending on input data. This is a measurement artifact, not an instability: the minimum and median values are consistent across sessions.
 
 ---
 
 ## Reproducibility
 
-All results were obtained on the same machine under identical conditions. To reproduce:
+All results obtained on the same machine under identical conditions. To reproduce:
 
 1. Build `benchmark_hw.cpp` with `cl /O2 /fp:precise benchmark_hw.cpp`
 2. Set X1, X2 to the values listed above
