@@ -156,18 +156,17 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 
 Hardware FPU spread is consistently **< 2%** — the FPU pipeline runs at a highly predictable latency.
 
-NPAt spread is **7–12%** — higher variance is expected because the mantissa rounding step fires conditionally based on the state of the guard bits, which varies with the accumulated value. This creates variable per-iteration cost depending on input data. This is a measurement artifact, not an instability: the minimum and median values are consistent across sessions.
+NPAt spread is **7–12%** — higher variance is expected because the mantissa rounding step fires conditionally based on the state of the guard bits, which varies with the accumulated value. This creates a variable per-iteration cost depending on the input data. This is a measurement artifact, not an instability: the minimum and median values are consistent across sessions.
 
 ---
 
 ## Reproducibility
 
-All results obtained on the same machine under identical conditions. To reproduce:
+All results were obtained on the same machine under identical conditions. To reproduce:
 
 1. Build `benchmark_hw.cpp` with `cl /O2 /fp:precise benchmark_hw.cpp`
 2. Set X1, X2 to the values listed above
 3. Run on a quiet system (no background load)
 4. Results will vary by CPU microarchitecture — cycles/iter will differ, but the **speedup ratio** should be consistent on any modern x86-64
 
-Full source and build instructions: [README.md](README.md)
-
+Full source and build instructions: [README.md](https://github.com/yur-spiridonov/Benchmark_Hardware-vs-NPAt-/blob/main/README.md)
