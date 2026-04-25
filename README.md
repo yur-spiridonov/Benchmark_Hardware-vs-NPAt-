@@ -3,6 +3,8 @@
 Reference benchmark for measuring **hardware FPU performance** on sequential floating-point accumulation.  
 Published as part of the [NPAt Pathway 1](https://github.com/yur-spiridonov/Benchmark_Hardware-vs-NPAt-) verification suite.
 
+> **Part of the NPAt project** · Main repository: [NPAt-Core-Research](https://github.com/yur-spiridonov/NPAt-Core-Research)
+
 ---
 
 ## Purpose
@@ -44,11 +46,11 @@ The benchmark accepts any `double` values for X1 and X2 — set them directly in
 
 | Input type | Example |
 |---|---|
-| Subnormal (denormalized) | X1 = −9.999...e−311, X2 = +9.999...e−312 |
-| Small normal, subtraction | X1 = −1.789...e−31, X2 = +1.765...e−26 |
+| Subnormal (denormalized) | X1 = −9.999e−311, X2 = +9.999e−312 |
+| Small normal, subtraction | X1 = −1.789e−31, X2 = +1.765e−26 |
 | Normal fractional | X1 = 0.125, X2 = 0.625 |
-| Large integers | X1 = 3.456...e+06, X2 = 8.765...e+09 |
-| Extreme magnitude | X1 = 3.456...e+200, X2 = 9.876...e+200 |
+| Large integers | X1 = 3.456e+06, X2 = 8.765e+09 |
+| Extreme magnitude | X1 = 3.456e+200, X2 = 9.876e+200 |
 
 The reference run uses **subnormal (denormalized) numbers** — a particularly interesting case because subnormal inputs trigger microcode assist on x86-64, increasing FPU pipeline latency. NPAt operates entirely in integer registers and is unaffected by this overhead, which is reflected in its best measured speedup of **×2.12** for this input type.
 
@@ -124,4 +126,4 @@ benchmark/
 
 ---
 
-*Part of the NPAt Pathway 1 verification suite · Author: Yuri Spiridonov · 2026*
+*Part of the NPAt project · [NPAt-Core-Research](https://github.com/yur-spiridonov/NPAt-Core-Research) · Author: Iouri Spiridonov · 2026*
