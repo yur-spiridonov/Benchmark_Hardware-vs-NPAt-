@@ -1,4 +1,4 @@
-# Benchmark Results — NPAt Pathway 1 vs Hardware IEEE 754
+# Benchmark Results — NPAt-algorithm vs Hardware IEEE 754
 
 All tests: Z = 1,000,000,000 iterations · 9 runs · MSVC /O2 · Windows 11 · Core 0 · REALTIME_PRIORITY_CLASS  
 Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalization)`
@@ -17,7 +17,7 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 | 6 | X1: 3.456e+200 / X2: 9.876e+200 | Extreme magnitude, same sign | 5.2394 | 2.6708 | **×1.96** |
 | 7 | X1: −3.456e+200 / X2: +9.876e+200 | Extreme magnitude, subtraction | 5.2793 | 2.7235 | **×1.94** |
 
-> **Key observation:** NPAt Pathway 1 outperforms hardware FPU across all tested input ranges.  
+> **Key observation:** NPAt-algorithm outperforms hardware FPU across all tested input ranges.  
 > The minimum speedup of **×1.46** occurs in the heavy subtraction case (Test 2) — explained below.
 
 ---
@@ -36,9 +36,9 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 
 ![Hardware IEEE 754 — subnormal](Screenshot%202026-04-18%20131638.png)
 
-**NPAt Pathway 1**
+**NPAt-algorithm**
 
-![NPAt Pathway 1 — subnormal](Screenshot%202026-04-18%20131920.png)
+![NPAt-algorithm — subnormal](Screenshot%202026-04-18%20131920.png)
 
 **Result: ×2.12 speedup · 100% bit-exact match**
 
@@ -58,9 +58,9 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 
 ![Hardware IEEE 754 — small normal subtraction](Screenshot%202026-04-21%20184530.png)
 
-**NPAt Pathway 1**
+**NPAt-algorithm**
 
-![NPAt Pathway 1 — small normal subtraction](Screenshot%202026-04-21%20181129.png)
+![NPAt-algorithm — small normal subtraction](Screenshot%202026-04-21%20181129.png)
 
 **Result: ×1.46 speedup · NPAt still faster despite heavy subtraction workload**
 
@@ -78,9 +78,9 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 
 ![Hardware IEEE 754 — normal fractional](Screenshot%202026-04-20%20120513.png)
 
-**NPAt Pathway 1**
+**NPAt-algorithm**
 
-![NPAt Pathway 1 — normal fractional](Screenshot%202026-04-20%20120003.png)
+![NPAt-algorithm — normal fractional](Screenshot%202026-04-20%20120003.png)
 
 **Result: ×2.26 speedup · 100% bit-exact match**
 
@@ -95,9 +95,9 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 
 ![Hardware IEEE 754 — large integers](Screenshot%202026-04-21%20112550.png)
 
-**NPAt Pathway 1**
+**NPAt-algorithm**
 
-![NPAt Pathway 1 — large integers](Screenshot%202026-04-20%20121846.png)
+![NPAt-algorithm — large integers](Screenshot%202026-04-20%20121846.png)
 
 **Result: ×2.12 speedup · 100% bit-exact match**
 
@@ -109,9 +109,9 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 
 ![Hardware IEEE 754 — very large](Screenshot%202026-04-20%20122555.png)
 
-**NPAt Pathway 1**
+**NPAt-algorithm**
 
-![NPAt Pathway 1 — very large](Screenshot%202026-04-20%20122136.png)
+![NPAt-algorithm — very large](Screenshot%202026-04-20%20122136.png)
 
 **Result: ×1.93 speedup · 100% bit-exact match**
 
@@ -123,9 +123,9 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 
 ![Hardware IEEE 754 — extreme magnitude](Screenshot%202026-04-20%20122726.png)
 
-**NPAt Pathway 1**
+**NPAt-algorithm**
 
-![NPAt Pathway 1 — extreme magnitude](Screenshot%202026-04-20%20123030.png)
+![NPAt-algorithm — extreme magnitude](Screenshot%202026-04-20%20123030.png)
 
 **Result: ×1.96 speedup · 100% bit-exact match**
 
@@ -144,9 +144,9 @@ Hardware mode: `VOLATILE (L1 Latency)` · NPAt mode: `VOLATILE (Full Normalizati
 
 ![Hardware IEEE 754 — extreme magnitude subtraction](Screenshot%202026-04-20%20123322.png)
 
-**NPAt Pathway 1**
+**NPAt-algorithm**
 
-![NPAt Pathway 1 — extreme magnitude subtraction](Screenshot%202026-04-21%20111721.png)
+![NPAt-algorithm — extreme magnitude subtraction](Screenshot%202026-04-21%20111721.png)
 
 **Result: ×1.94 speedup · 100% bit-exact match**
 
