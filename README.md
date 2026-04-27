@@ -1,7 +1,7 @@
 # Hardware IEEE 754 Baseline Benchmark
 
 Reference benchmark for measuring **hardware FPU performance** on sequential floating-point accumulation.  
-Published as part of the [NPAt Pathway 1](https://github.com/yur-spiridonov/Benchmark_Hardware-vs-NPAt-) verification suite.
+Published as part of the [NPAt-algorithm](https://github.com/yur-spiridonov/Benchmark_Hardware-vs-NPAt-) verification suite.
 
 > **Part of the NPAt project** · Main repository: [NPAt-Core-Research](https://github.com/yur-spiridonov/NPAt-Core-Research)
 
@@ -11,7 +11,7 @@ Published as part of the [NPAt Pathway 1](https://github.com/yur-spiridonov/Benc
 
 This benchmark establishes the **Hardware IEEE 754 baseline** — the performance of a native FPU (`ADDSD` instruction) on a sequential accumulation loop with 10⁹ iterations.
 
-It is the reference point against which **NPAt Pathway 1** (a software ALU-based accumulator) is compared. The benchmark is intentionally minimal and transparent so that results can be independently reproduced.
+It is the reference point against which **NPAt-algorithm** (a software ALU-based accumulator) is compared. The benchmark is intentionally minimal and transparent so that results can be independently reproduced.
 
 ---
 
@@ -73,15 +73,15 @@ Hardware IEEE 754 baseline — subnormal inputs:
 
 ![Hardware IEEE 754 baseline — subnormal](Screenshot%202026-04-18%20131638.png)
 
-NPAt Pathway 1 — same inputs, ×2.12 speedup, bit-exact result:
+NPAt-algorithm — same inputs, ×2.12 speedup, bit-exact result:
 
-![NPAt Pathway 1 — subnormal](Screenshot%202026-04-18%20131920.png)
+![NPAt-algorithm — subnormal](Screenshot%202026-04-18%20131920.png)
 
 ---
 
 ## Methodology
 
-**Sequential dependency chain.** The accumulator variable is declared `volatile` to prevent the compiler from reordering or vectorizing the loop. Each addition depends on the result of the previous one — this is the target pattern for NPAt Pathway 1.
+**Sequential dependency chain.** The accumulator variable is declared `volatile` to prevent the compiler from reordering or vectorizing the loop. Each addition depends on the result of the previous one — this is the target pattern for NPAt-algorithm.
 
 **Cycle counting.** `__rdtsc()` is read immediately before and after the hot loop. The thread is pinned to Core 0 with `REALTIME_PRIORITY_CLASS` to minimize OS scheduling noise.
 
@@ -89,7 +89,7 @@ NPAt Pathway 1 — same inputs, ×2.12 speedup, bit-exact result:
 
 **Warm-up.** One full Z-iteration run is executed before measurement to bring code and data into L1/L2 cache.
 
-**Output verification.** The final sum is printed with 50 significant decimal digits. This value is compared bit-for-bit against the NPAt Pathway 1 result to confirm IEEE 754 correctness.
+**Output verification.** The final sum is printed with 50 significant decimal digits. This value is compared bit-for-bit against the NPAt-algorithm result to confirm IEEE 754 correctness.
 
 ---
 
